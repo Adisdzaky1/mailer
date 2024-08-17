@@ -5,343 +5,201 @@ const cors = require("cors");
 const app = express();
 
 const ht = `<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Email Template</title>
 
-    <!--[if !mso]><!-->
-    <style type="text/css">
-        @import url('https://fonts.mailersend.com/css?family=Inter:400,600');
-    </style>
-    <!--<![endif]-->
-
-    <style type="text/css" rel="stylesheet" media="all">
-        @media only screen and (max-width: 640px) {
-            .ms-header {
-                display: none !important;
-            }
-            .ms-content {
-                width: 100% !important;
-                border-radius: 0;
-            }
-            .ms-content-body {
-                padding: 30px !important;
-            }
-            .ms-footer {
-                width: 100% !important;
-            }
-            .mobile-wide {
-                width: 100% !important;
-            }
-            .info-lg {
-                padding: 30px;
-            }
-        }
-    </style>
-    <!--[if mso]>
-    <style type="text/css">
-    body { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td * { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td p { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td a { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td span { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td div { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td ul li { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td ol li { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td blockquote { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    th * { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    </style>
-    <![endif]-->
-</head>
-<body style="font-family:'Inter', Helvetica, Arial, sans-serif; width: 100% !important; height: 100%; margin: 0; padding: 0; -webkit-text-size-adjust: none; background-color: #f4f7fa; color: #4a5566;" >
-
-<div class="preheader" style="display:none !important;visibility:hidden;mso-hide:all;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;" ></div>
-
-<table class="ms-body" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;background-color:#f4f7fa;width:100%;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" >
-    <tr>
-        <td align="center" style="word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-
-            <table class="ms-container" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" >
-                <tr>
-                    <td align="center" style="word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-
-                        <table class="ms-header" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;" >
-                            <tr>
-                                <td height="40" style="font-size:0px;line-height:0px;word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;" >
-                                    &nbsp;
-                                </td>
-                            </tr>
-                        </table>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" style="word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-
-                        <table class="ms-content" width="640" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;width:640px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;background-color:#FFFFFF;border-radius:6px;box-shadow:0 3px 6px 0 rgba(0,0,0,.05);" >
-                            <tr>
-                                <td class="ms-content-body" style="word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:40px;padding-bottom:40px;padding-right:50px;padding-left:50px;" >
-
-                                    <p class="logo" style="margin-right:0;margin-left:0;line-height:28px;font-weight:600;font-size:21px;color:#111111;text-align:center;margin-top:0;margin-bottom:40px;" ><span style="color:#0052e2;font-family:Arial, Helvetica, sans-serif;font-size:30px;vertical-align:bottom;" >❖&nbsp;</span>Company</p>
-
-                                    <h1 style="margin-top:0;color:#111111;font-size:24px;line-height:36px;font-weight:600;margin-bottom:24px;" >Hi {$name},</h1>
-
-                                    <p style="color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;" >Thanks for using {$account.name}. This is an invoice for your recent purchase.</p>
-
-                                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;" >
-                                        <tr>
-                                            <td class="info" style="word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;border-radius:4px;background-color:#f4f7fa;" >
-
-                                                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;" >
-                                                    <tr>
-                                                        <td style="word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-                                                            <strong style="font-weight:600;" >Amount Due:</strong> {$total}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-                                                            <strong style="font-weight:600;" >Due By:</strong> {$due_date}
-                                                        </td>
-                                                    </tr>
-                                                </table>
-
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                    <table width="100%" align="center" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;" >
-                                        <tr>
-                                            <td align="center" style="padding-top:30px;padding-bottom:30px;padding-right:0;padding-left:0;word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-
+    <!-- Load font only for non-Microsoft email clients -->
     <!--[if !mso]><!-->
     <style type="text/css">
         @import url("https://fonts.mailersend.com/css?family=Inter:400,600");
     </style>
     <!--<![endif]-->
 
-    <style type="text/css" rel="stylesheet" media="all">
+    <!-- Responsive styles -->
+    <style type="text/css" media="all">
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100% !important;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            font-family: 'Inter', Helvetica, Arial, sans-serif;
+            color: #4a5566;
+        }
+
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .content-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .ms-content-body {
+            padding: 40px;
+        }
+
         @media only screen and (max-width: 640px) {
-            .ms-header {
-                display: none !important;
-            }
-            .ms-content {
+            .content-wrapper {
                 width: 100% !important;
                 border-radius: 0;
             }
+
             .ms-content-body {
                 padding: 30px !important;
             }
-            .ms-footer {
-                width: 100% !important;
-            }
-            .mobile-wide {
-                width: 100% !important;
-            }
+
             .info-lg {
                 padding: 30px;
             }
         }
+
+        /* Styles for Microsoft Outlook */
+        <!--[if mso]>
+        <style type="text/css">
+            body, td, th, p, a, li, span, div {
+                font-family: Arial, Helvetica, sans-serif !important;
+            }
+        </style>
+        <![endif]-->
     </style>
-    <!--[if mso]>
-    <style type="text/css">
-    body { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td * { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td p { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td a { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td span { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td div { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td ul li { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td ol li { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    td blockquote { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    th * { font-family: Arial, Helvetica, sans-serif!important  !important; }
-    </style>
-    <![endif]-->
 </head>
-<body style="font-family:"Inter", Helvetica, Arial, sans-serif; width: 100% !important; height: 100%; margin: 0; padding: 0; -webkit-text-size-adjust: none; background-color: #f4f7fa; color: #4a5566;" >
 
-<div class="preheader" style="display:none !important;visibility:hidden;mso-hide:all;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;" ></div>
+<body>
+    <!-- Preheader text: Hidden in email -->
+    <div class="preheader" style="display:none !important; visibility:hidden; mso-hide:all; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">
+        Preheader text goes here
+    </div>
 
-<table class="ms-body" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;background-color:#f4f7fa;width:100%;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" >
-    <tr>
-        <td align="center" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
+    <!-- Main email content -->
+    <table role="presentation" class="ms-body" align="center" width="100%">
+        <tr>
+            <td align="center">
 
-            <table class="ms-container" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" >
-                <tr>
-                    <td align="center" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
+                <!-- Outer container with max-width for responsiveness -->
+                <table role="presentation" class="content-wrapper" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td align="center">
 
-                        <table class="ms-header" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;" >
-                            <tr>
-                                <td height="40" style="font-size:0px;line-height:0px;word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;" >
-                                    &nbsp;
-                                </td>
-                            </tr>
-                        </table>
+                            <!-- Logo and spacing -->
+                            <table role="presentation" class="ms-header">
+                                <tr>
+                                    <td height="40">&nbsp;</td>
+                                </tr>
+                            </table>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
+                            <!-- Main content section -->
+                            <table role="presentation" class="ms-content" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="ms-content-body">
 
-                        <table class="ms-content" width="640" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;width:640px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;background-color:#FFFFFF;border-radius:6px;box-shadow:0 3px 6px 0 rgba(0,0,0,.05);" >
-                            <tr>
-                                <td class="ms-content-body" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:40px;padding-bottom:40px;padding-right:50px;padding-left:50px;" >
+                                        <!-- Logo -->
+                                        <p class="logo" style="text-align: center; font-weight: 600; font-size: 21px; color: #111;">
+                                            <span style="color: #0052e2; font-size: 30px;">❖&nbsp;</span>Company
+                                        </p>
 
-                                    <p class="logo" style="margin-right:0;margin-left:0;line-height:28px;font-weight:600;font-size:21px;color:#111111;text-align:center;margin-top:0;margin-bottom:40px;" ><span style="color:#0052e2;font-family:Arial, Helvetica, sans-serif;font-size:30px;vertical-align:bottom;" >❖&nbsp;</span>Company</p>
+                                        <!-- Greeting and message -->
+                                        <h1 style="font-size: 24px; font-weight: 600; color: #111; margin-bottom: 24px;">Hi {$name},</h1>
+                                        <p style="line-height: 28px; margin-bottom: 20px;">Thanks for using {$account.name}. This is an invoice for your recent purchase.</p>
 
-                                    <h1 style="margin-top:0;color:#111111;font-size:24px;line-height:36px;font-weight:600;margin-bottom:24px;" >Hi {$name},</h1>
+                                        <!-- Info box -->
+                                        <table role="presentation" class="info" style="background-color: #f4f7fa; padding: 20px; border-radius: 4px;">
+                                            <tr>
+                                                <td><strong>Amount Due:</strong> {$total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Due By:</strong> {$due_date}</td>
+                                            </tr>
+                                        </table>
 
-                                    <p style="color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;" >Thanks for using {$account.name}. This is an invoice for your recent purchase.</p>
+                                        <!-- Button to pay the invoice -->
+                                        <table align="center" role="presentation" style="margin: 30px 0;">
+                                            <tr>
+                                                <td align="center">
+                                                    <a href="{$action_url}" style="background-color: #0052e2; padding: 14px 30px; color: #FFF; text-decoration: none; font-weight: 600; border-radius: 3px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);">Pay Invoice</a>
+                                                </td>
+                                            </tr>
+                                        </table>
 
-                                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;" >
-                                        <tr>
-                                            <td class="info" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;border-radius:4px;background-color:#f4f7fa;" >
+                                        <!-- Invoice details -->
+                                        <table role="presentation" style="width: 100%;">
+                                            <tr>
+                                                <td>
+                                                    <h3>{$invoice_id}</h3>
+                                                </td>
+                                                <td align="right">
+                                                    <h3>{$date}</h3>
+                                                </td>
+                                            </tr>
+                                        </table>
 
-                                                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;" >
-                                                    <tr>
-                                                        <td style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-                                                            <strong style="font-weight:600;" >Amount Due:</strong> {$total}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-                                                            <strong style="font-weight:600;" >Due By:</strong> {$due_date}
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                        <!-- Invoice items -->
+                                        <table role="presentation" class="table" style="width: 100%; border-top: 1px solid #e2e8f0;">
+                                            <tr>
+                                                <th align="left" style="padding-top: 10px; color: #85878E;">Description</th>
+                                                <th align="right" style="padding-top: 10px; color: #85878E;">Amount</th>
+                                            </tr>
+                                            <tr>
+                                                <td>{$description}</td>
+                                                <td align="right">{$amount}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total</strong></td>
+                                                <td align="right"><strong>{$total}</strong></td>
+                                            </tr>
+                                        </table>
 
-                                            </td>
-                                        </tr>
-                                    </table>
+                                        <!-- Footer info -->
+                                        <p>If you have any questions, reply to this email or reach out to our <a href="{$support_url}" style="color: #0052e2;">support team</a>.</p>
+                                        <p>Cheers, <br>The {$account.name} Team</p>
 
-                                    <table width="100%" align="center" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;" >
-                                        <tr>
-                                            <td align="center" style="padding-top:30px;padding-bottom:30px;padding-right:0;padding-left:0;word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
+                                        <p class="small" style="color: #4a5566;">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
+                                        <p class="small">{$action_url}</p>
 
-                                                <table class="mobile-wide" border="0" cellspacing="0" cellpadding="0" role="presentation" style="border-collapse:collapse;" >
-                                                    <tr>
-                                                        <td align="center" class="btn" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;background-color:#0052e2;box-shadow:0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);border-radius:3px;" >
-                                                            <a href="{$action_url}" target="_blank" style="background-color:#0052e2;padding-top:14px;padding-bottom:14px;padding-right:30px;padding-left:30px;display:inline-block;color:#FFF;text-decoration:none;border-radius:3px;-webkit-text-size-adjust:none;box-sizing:border-box;border-width:0px;border-style:solid;border-color:#0052e2;font-weight:600;font-size:15px;line-height:21px;letter-spacing:0.25px;" >Pay Invoice</a>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                            </td>
-                                        </tr>
-                                    </table>
+                            <!-- Footer section -->
+                            <table role="presentation" class="ms-footer">
+                                <tr>
+                                    <td align="center" style="padding: 40px;">
+                                        <p>&copy; 2024 {$account.name}. All rights reserved.</p>
+                                        <p>1234 Street Rd. <br>Suite 1234 <br>City, State, ZIP Code</p>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;" >
-                                        <tr>
-                                            <td style="padding-top:20px;padding-bottom:20px;padding-right:0;padding-left:0;word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
+                        </td>
+                    </tr>
+                </table>
 
-                                                <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;" >
-                                                    <tr>
-                                                        <td valign="middle" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-                                                            <h3 style="margin-top:0;color:#111111;font-size:18px;line-height:26px;font-weight:600;margin-bottom:24px;" >{$invoice_id}</h3>
-                                                        </td>
-                                                        <td align="right" valign="middle" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-                                                            <h3 style="margin-top:0;color:#111111;font-size:18px;line-height:26px;font-weight:600;margin-bottom:24px;" >{$date}</h3>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-
-                                                <table class="table" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;" >
-                                                    <tr>
-                                                        <th align="left" style="font-family:"Inter", Helvetica, Arial, sans-serif;padding-top:10px;padding-bottom:10px;padding-right:0;padding-left:0;color:#85878E;font-size:13px;font-weight:600;line-height:18px;" >
-                                                            Description
-                                                        </th>
-                                                        <th align="right" style="font-family:"Inter", Helvetica, Arial, sans-serif;padding-top:10px;padding-bottom:10px;padding-right:0;padding-left:0;color:#85878E;font-size:13px;font-weight:600;line-height:18px;" >
-                                                            Amount
-                                                        </th>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td valign="middle" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:14px;padding-bottom:14px;padding-right:0;padding-left:0;border-top-width:1px;border-top-style:solid;border-top-color:#e2e8f0;" >
-                                                            {$description}
-                                                        </td>
-                                                        <td valign="middle" align="right" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:14px;padding-bottom:14px;padding-right:0;padding-left:0;border-top-width:1px;border-top-style:solid;border-top-color:#e2e8f0;" >
-                                                            {$amount}
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:14px;padding-bottom:14px;padding-right:0;padding-left:0;border-top-width:1px;border-top-style:solid;border-top-color:#e2e8f0;" >
-                                                            <h4 style="margin-top:0;color:#111111;font-size:16px;line-height:24px;font-weight:600;margin-bottom:16px;" >Total</h4>
-                                                        </td>
-                                                        <td align="right" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:14px;padding-bottom:14px;padding-right:0;padding-left:0;border-top-width:1px;border-top-style:solid;border-top-color:#e2e8f0;" >
-                                                            <h4 style="margin-top:0;color:#111111;font-size:16px;line-height:24px;font-weight:600;margin-bottom:16px;" >{$total}</h4>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                    <p style="color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;" >If you have any questions about this invoice, simply reply to this email or reach out to our <a href="{$support_url}" style="color:#0052e2;" >support team</a> for help.</p>
-
-                                    <p style="color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;" >Cheers,
-                                        <br>The {$account.name} Team</p>
-
-                                    <table width="100%" style="border-collapse:collapse;" >
-                                        <tr>
-                                            <td height="20" style="font-size:0px;line-height:0px;word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;" >
-                                                &nbsp;
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td height="20" style="font-size:0px;line-height:0px;border-top-width:1px;border-top-style:solid;border-top-color:#e2e8f0;word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;" >
-                                                &nbsp;
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                    <p class="small" style="color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:14px;line-height:21px;" >If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
-                                    <p class="small" style="color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:14px;line-height:21px;" >{$action_url}</p>
-
-                                </td>
-                            </tr>
-                        </table>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-
-                        <table class="ms-footer" width="640" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;width:640px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;" >
-                            <tr>
-                                <td class="ms-content-body" align="center" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:40px;padding-bottom:40px;padding-right:50px;padding-left:50px;" >
-                                    <p class="small" style="margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;color:#96a2b3;font-size:14px;line-height:21px;" >&copy; 2020 {$account.name}. All rights reserved.</p>
-                                    <p class="small" style="margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;color:#96a2b3;font-size:14px;line-height:21px;" >
-                                        1234 Street Rd.
-                                        <br>Suite 1234
-                                        <br>City, State, ZIP Code
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
-
-                    </td>
-                </tr>
-            </table>
-
-        </td>
-    </tr>
-</table>
-
+            </td>
+        </tr>
+    </table>
 </body>
+
 </html>`;
 
 app.use(cors())
