@@ -5,22 +5,6 @@ const cors = require("cors");
 const app = express();
 
 const ht = `
-                                            </td>
-l                                        </tr>
-                                    </table>
-
-                                    <table width="100%" align="center" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;" >
-                                        <tr>
-                                            <td align="center" style="padding-top:30px;padding-bottom:30px;padding-right:0;padding-left:0;word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-
 <!DOCTYPE html>
 <html lang="en">
 
