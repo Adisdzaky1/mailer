@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 const app = express();
 
-const ht = '<!DOCTYPE html>
+const ht = `<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -342,7 +342,7 @@ const ht = '<!DOCTYPE html>
 </table>
 
 </body>
-</html>';
+</html>`;
 
 app.use(cors())
 app.use(bodyParser.json());
