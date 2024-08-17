@@ -352,7 +352,7 @@ app.post("/api/mail", (req, res) => {
   const pass = req.body.password;
   const to = req.body.recipient;
   const subject = req.body.subject;
-  const mailbody = req.body.message;
+  
   const sendEmail = async (mailDetails) => {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
