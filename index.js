@@ -249,7 +249,7 @@ const htt =  `<!DOCTYPE html>
 </html>
 
 
-`,
+`;
 
 
   sendEmail({
