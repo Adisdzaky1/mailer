@@ -41,11 +41,7 @@ app.post("/api/mail", (req, res) => {
     }
   };
 
-  sendEmail({
-    from: sender,
-    to: to,
-    subject: subject,
-    html: `<!DOCTYPE html>
+const htt =  `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -162,12 +158,15 @@ app.post("/api/mail", (req, res) => {
 
                                         <!-- Greeting and message -->
                                         <h1 style="font-size: 24px; font-weight: 600; color: #111; margin-bottom: 24px;">Hai</h1>
-                                        <p style="line-height: 28px; margin-bottom: 20px;">Terimakasih Telah Order Di AYO TOPUP. Ini adalah faktur untuk pembelian terbaru Anda./p>
+                                        <p style="line-height: 28px; margin-bottom: 20px;">Terimakasih Telah Order Di AYO TOPUP. Ini adalah faktur untuk pembelian terbaru Anda.</p>
 
                                         <!-- Info box -->
                                         <table role="presentation" class="info" style="background-color: #f4f7fa; padding: 20px; border-radius: 4px;">
                                             <tr>
-                                                <td id="total"><strong>Jumlah yang Harus Dibayar:</strong></td>
+                                                <td id="total"><strong>Jumlah yang Harus Dibayar:</strong>${total}</td>
+                                            </tr>
+                                             <tr>
+                                                <td id="total"><strong>Segera selesaikan:</strong></td>
                                             </tr>
                                         </table>
 
@@ -175,7 +174,7 @@ app.post("/api/mail", (req, res) => {
                                         <table align="center" role="presentation" style="margin: 30px 0;">
                                             <tr>
                                                 <td align="center">
-                                                    <a href='' + url style="background-color: #0052e2; padding: 14px 30px; color: #FFF; text-decoration: none; font-weight: 600; border-radius: 3px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);">Bayar Invoice</a>
+                                                    <a href="${url}" style="background-color: #0052e2; padding: 14px 30px; color: #FFF; text-decoration: none; font-weight: 600; border-radius: 3px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);">Bayar Invoice</a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -184,10 +183,10 @@ app.post("/api/mail", (req, res) => {
                                         <table role="presentation" style="width: 100%;">
                                             <tr>
                                                 <td>
-                                                    <h3 id="idtrx"></h3>
+                                                    <h3 id="idtrx">${idtrx}</h3>
                                                 </td>
                                                 <td align="right">
-                                                    <h3 id="tanggal"></h3>
+                                                    <h3 id="tanggal">${tanggal}</h3>
                                                 </td>
                                             </tr>
                                         </table>
@@ -199,17 +198,17 @@ app.post("/api/mail", (req, res) => {
                                                 <th align="right" style="padding-top: 10px; color: #85878E;">Amount</th>
                                             </tr>
                                             <tr>
-                                                <td id="barang">{$description}</td>
-                                                <td id="total" align="right">Total</td>
+                                                <td id="barang">${barang}</td>
+                                                <td id="total" align="right">${total}</td>
                                             </tr>
                                             <tr>
                                                 <td><strong>Total</strong></td>
-                                                <td id="total" align="right"><strong>{$total}</strong></td>
+                                                <td id="total" align="right"><strong>${total}</strong></td>
                                             </tr>
                                         </table>
 
                                         <!-- Footer info -->
-                                        <p>If you have any questions, reply to this email or reach out to our <a href="{$support_url}" style="color: #0052e2;">support team</a>.</p>
+                                        <p>If you have any questions, reply to this email or reach out to our <a href="" style="color: #0052e2;">support team</a>.</p>
                                         <p>Cheers, <br>The {$account.name} Team</p>
 
                                         <p class="small" style="color: #4a5566;">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
@@ -245,30 +244,19 @@ app.post("/api/mail", (req, res) => {
             </td>
         </tr>
     </table>
-
-<script>
-//var total = 
-//var url = 
-//var idtrx = 
-//var tanggal = 
-//var barang-yang-dipesan = 
-
-
-
-document.getElementById("total").textContent = total;
-
-document.getElementById("idtrx").textContent = idtrx;
-document.getElementById("tanggal").textContent = tanggal;
-document.getElementById("barang").textContent = barang;
-
-
-</script>
 </body>
 
 </html>
 
 
 `,
+
+
+  sendEmail({
+    from: sender,
+    to: to,
+    subject: subject,
+    html: htt,
   });
 });
 app.use((req, res, next) => {
