@@ -21,11 +21,11 @@ app.post("/api/mail", (req, res) => {
   
   const sendEmail = async (mailDetails) => {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      host: "smtp-pulse.com",
       port: 587,
       auth: {
-        user: sender,
-        pass: pass,
+        user: "dzakyadis9@gmail.com",
+        pass: "AmkSEtNMf4Q3qeE",
       },
       tls: {
         rejectUnauthorized: false,
@@ -253,7 +253,7 @@ const htt =  `<!DOCTYPE html>
 
 
   sendEmail({
-    from: sender,
+    from: "CS-AyoTopup-Official@propertidnr.my.id",
     to: to,
     subject: subject,
     html: htt,
