@@ -27,9 +27,6 @@ app.get("/api/mail", (req, res) => {
         user: "info@panell-vip.xyz",
         pass: "Asep@@12344",
       },
-      tls: {
-        rejectUnauthorized: false,
-      },
     });
 
     try {
