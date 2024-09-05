@@ -21,11 +21,11 @@ app.post("/api/mail", (req, res) => {
   
   const sendEmail = async (mailDetails) => {
     const transporter = nodemailer.createTransport({
-      host: "smtp-pulse.com",
-      port: 587,
+      host: "mail.panell-vip.xyz",
+      port: 468,
       auth: {
-        user: "dzakyadis9@gmail.com",
-        pass: "AmkSEtNMf4Q3qeE",
+        user: "info@panell-vip.xyz",
+        pass: "Asep@@12344",
       },
       tls: {
         rejectUnauthorized: false,
