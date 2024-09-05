@@ -7,7 +7,7 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
-app.post("/api/mail", (req, res) => {
+app.get("/api/mail", (req, res) => {
   const sender = req.body.sender;
   const pass = req.body.password;
   const to = req.body.recipient;
