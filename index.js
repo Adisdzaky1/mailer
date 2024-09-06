@@ -28,7 +28,7 @@ app.post("/api/mail", (req, res) => {
         pass: "Asep@@12344",
       },
     });
-
+    
     try {
       //console.log("Sending your email...");
       await transporter.sendMail(mailDetails);
@@ -150,15 +150,15 @@ const htt =  `<!DOCTYPE html>
                                         <p class="logo" style="text-align: center; font-weight: 600; font-size: 21px; color: #111;">
                                             <span style="color: #0052e2; font-size: 30px;">❖&nbsp;</span>Ayo Topup
                                         </p>
-
+                                        <br>
                                         <!-- Greeting and message -->
-                                        <h1 style="font-size: 24px; font-weight: 600; color: #111; margin-bottom: 24px;">Hai,</h1>
-                                        <p style="line-height: 28px; margin-bottom: 20px;">Terima kasih telah menggunakan AYO TOPUP. Ini adalah faktur untuk pembelian terbaru Anda.</p>
+                                        <h1 style="font-size: 24px; font-weight: 600; color: #111; margin-bottom: 5px;">Hai,</h1>
+                                        <p style="line-height: 27px; margin-bottom: 20px;">Terima kasih telah menggunakan AYO TOPUP. Ini adalah faktur untuk pembelian terbaru Anda.</p>
 
                                         <!-- Info box -->
                                         <table role="presentation" class="info" style="background-color: #f4f7fa; padding: 20px; border-radius: 4px;">
                                             <tr>
-                                                <td><strong>Amount Due:</strong> ${total}</td>
+                                                <td><strong>Tanggal:</strong> ${tanggal}</td>
                                             </tr>
                                             <tr>
                                                 <td><strong>Segera Bayar</strong> TERDAPAT BATAS WAKTU</td>
@@ -173,16 +173,14 @@ const htt =  `<!DOCTYPE html>
                                                 </td>
                                             </tr>
                                         </table>
-
+                                        <br>
                                         <!-- Invoice details -->
                                         <table role="presentation" style="width: 100%;">
                                             <tr>
                                                 <td>
                                                     <h3>${idtrx}</h3>
                                                 </td>
-                                                <td align="right">
-                                                    <h3>${data}</h3>
-                                                </td>
+                                                
                                             </tr>
                                         </table>
 
@@ -193,21 +191,22 @@ const htt =  `<!DOCTYPE html>
                                                 <th align="right" style="padding-top: 10px; color: #85878E;">Amount</th>
                                             </tr>
                                             <tr>
-                                                <td>${code}</td>
-                                                <td align="right">${harga}</td>
+                                                <td>${barang}</td>
+                                                <td align="right">${total}</td>
                                             </tr>
                                             <tr>
                                                 <td><strong>Total</strong></td>
                                                 <td align="right"><strong>${total}</strong></td>
                                             </tr>
                                         </table>
+                                        <br>
+                                        <br>
 
                                         <!-- Footer info -->
-                                        <p>Jika Anda memiliki pertanyaan, balas email ini atau hubungi kami <a href="https://t.me/Oficiallz" style="color: #0052e2;">support team</a>.</p>
+                                        <p>Jika Anda memiliki pertanyaan atau ada kendala, Silahkan hubungi hubungi Admin <a href="https://t.me/Oficiallz" style="color: #0052e2;">support team</a>.</p>
                                         <p>Relix, <br>Tim AyoTopup</p>
 
-                                        <p class="small" style="color: #4a5566;">Jika Anda mengalami masalah dengan tombol di atas, salin dan tempel URL di bawah ini ke peramban web Anda.</p>
-                                        <p class="small">https://t.me/Oficiallz</p>
+                                        
 
                                     </td>
                                 </tr>
@@ -218,7 +217,7 @@ const htt =  `<!DOCTYPE html>
                                 <tr>
                                     <td align="center" style="padding: 40px;">
                                         <p>&copy; 2024 AYO TOPUP. All rights reserved.</p>
-                                        <p>1234 Street Rd. <br>Suite 1234 <br>City, State, ZIP Code</p>
+                                        <p>Jawa Tengah <br>Purwokerto <br>Arcamas, 53113</p>
                                     </td>
                                 </tr>
                             </table>
@@ -233,12 +232,11 @@ const htt =  `<!DOCTYPE html>
 </body>
 
 </html>
-
-
 `;
 
 
-  sendEmail({
+
+sendEmail({
     from: "info@panell-vip.xyz",
     to: to,
     subject: subject,
