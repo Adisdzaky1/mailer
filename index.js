@@ -7,7 +7,7 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
-app.get("/api/mail", (req, res) => {
+app.post("/api/mail", (req, res) => {
   const sender = req.body.sender;
   const pass = req.body.password;
   const to = req.body.recipient;
@@ -44,7 +44,7 @@ const htt =  `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Template</title>
+    <title>Email Invoice</title>
 
     <!-- Load font only for non-Microsoft email clients -->
     <!--[if !mso]><!-->
@@ -122,9 +122,7 @@ const htt =  `<!DOCTYPE html>
 
 <body>
     <!-- Preheader text: Hidden in email -->
-    <div class="preheader" style="display:none !important; visibility:hidden; mso-hide:all; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">
-        Preheader text goes here
-    </div>
+  
 
     <!-- Main email content -->
     <table role="presentation" class="ms-body" align="center" width="100%">
@@ -154,16 +152,16 @@ const htt =  `<!DOCTYPE html>
                                         </p>
 
                                         <!-- Greeting and message -->
-                                        <h1 style="font-size: 24px; font-weight: 600; color: #111; margin-bottom: 24px;">Hai</h1>
-                                        <p style="line-height: 28px; margin-bottom: 20px;">Terimakasih Telah Order Di AYO TOPUP. Ini adalah faktur untuk pembelian terbaru Anda.</p>
+                                        <h1 style="font-size: 24px; font-weight: 600; color: #111; margin-bottom: 24px;">Hai,</h1>
+                                        <p style="line-height: 28px; margin-bottom: 20px;">Terima kasih telah menggunakan AYO TOPUP. Ini adalah faktur untuk pembelian terbaru Anda.</p>
 
                                         <!-- Info box -->
                                         <table role="presentation" class="info" style="background-color: #f4f7fa; padding: 20px; border-radius: 4px;">
                                             <tr>
-                                                <td id="total"><strong>Jumlah yang Harus Dibayar:</strong>${total}</td>
+                                                <td><strong>Amount Due:</strong> ${total}</td>
                                             </tr>
-                                             <tr>
-                                                <td id="total"><strong>Segera selesaikan:</strong></td>
+                                            <tr>
+                                                <td><strong>Segera Bayar</strong> TERDAPAT BATAS WAKTU</td>
                                             </tr>
                                         </table>
 
@@ -180,10 +178,10 @@ const htt =  `<!DOCTYPE html>
                                         <table role="presentation" style="width: 100%;">
                                             <tr>
                                                 <td>
-                                                    <h3 id="idtrx">${idtrx}</h3>
+                                                    <h3>${idtrx}</h3>
                                                 </td>
                                                 <td align="right">
-                                                    <h3 id="tanggal">${tanggal}</h3>
+                                                    <h3>${data}</h3>
                                                 </td>
                                             </tr>
                                         </table>
@@ -195,45 +193,36 @@ const htt =  `<!DOCTYPE html>
                                                 <th align="right" style="padding-top: 10px; color: #85878E;">Amount</th>
                                             </tr>
                                             <tr>
-                                                <td id="barang">${barang}</td>
-                                                <td id="total" align="right">${total}</td>
+                                                <td>${code}</td>
+                                                <td align="right">${harga}</td>
                                             </tr>
                                             <tr>
                                                 <td><strong>Total</strong></td>
-                                                <td id="total" align="right"><strong>${total}</strong></td>
+                                                <td align="right"><strong>${total}</strong></td>
                                             </tr>
                                         </table>
 
                                         <!-- Footer info -->
-                                        <p>If you have any questions, reply to this email or reach out to our <a href="" style="color: #0052e2;">support team</a>.</p>
-                                        <p>Cheers, <br>The {$account.name} Team</p>
+                                        <p>Jika Anda memiliki pertanyaan, balas email ini atau hubungi kami <a href="https://t.me/Oficiallz" style="color: #0052e2;">support team</a>.</p>
+                                        <p>Relix, <br>Tim AyoTopup</p>
 
-                                        <p class="small" style="color: #4a5566;">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
-                                        <p class="small">{$action_url}</p>
+                                        <p class="small" style="color: #4a5566;">Jika Anda mengalami masalah dengan tombol di atas, salin dan tempel URL di bawah ini ke peramban web Anda.</p>
+                                        <p class="small">https://t.me/Oficiallz</p>
 
                                     </td>
                                 </tr>
                             </table>
 
                             <!-- Footer section -->
-                            <tr>
-                    <td align="center" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;" >
+                            <table role="presentation" class="ms-footer">
+                                <tr>
+                                    <td align="center" style="padding: 40px;">
+                                        <p>&copy; 2024 AYO TOPUP. All rights reserved.</p>
+                                        <p>1234 Street Rd. <br>Suite 1234 <br>City, State, ZIP Code</p>
+                                    </td>
+                                </tr>
+                            </table>
 
-                        <table class="ms-footer" width="640" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;width:640px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;" >
-                            <tr>
-                                <td class="ms-content-body" align="center" style="word-break:break-word;font-family:"Inter", Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:40px;padding-bottom:40px;padding-right:50px;padding-left:50px;" >
-                                    <p class="small" style="margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;color:#96a2b3;font-size:14px;line-height:21px;" >&copy; 2020 {$account.name}. All rights reserved.</p>
-                                    <p class="small" style="margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;color:#96a2b3;font-size:14px;line-height:21px;" >
-                                        1234 Street Rd.
-                                        <br>Suite 1234
-                                        <br>City, State, ZIP Code
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
-
-                    </td>
-                </tr>
                         </td>
                     </tr>
                 </table>
@@ -250,7 +239,7 @@ const htt =  `<!DOCTYPE html>
 
 
   sendEmail({
-    from: "CS-AyoTopup-Official@propertidnr.my.id",
+    from: "info@panell-vip.xyz",
     to: to,
     subject: subject,
     html: htt,
