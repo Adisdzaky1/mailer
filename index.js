@@ -101,15 +101,15 @@ app.post("/api/mail", (req, res) => {
                     </strong>
                 </div>
             </div>
-<br>
+
             <!-- CTA Button -->
-            <a href="${url}" style="display: inline-block; background: linear-gradient(135deg, #4CAF50, #45a049); color: white; padding: 14px 35px; text-decoration: none; border-radius: 30px;">
+            <a href="${url}" style="margin-bottom: 30px; display: inline-block; background: linear-gradient(135deg, #4CAF50, #45a049); color: white; padding: 14px 35px; text-decoration: none; border-radius: 30px;">
                 Lihat Invoice
             </a>
         </div>
 
         <!-- Footer -->
-        <br>
+        
         <tr>
             <td style="padding: 20px 0; text-align: center; color: #636e72; font-size: 12px;">
                 <p>Jika Anda memiliki pertanyaan, hubungi kami di <a href="mailto:cs.ayotopup.official@gmail.com" style="color: #4CAF50;">cs.ayotopup.official@gmail.com</a></p>
