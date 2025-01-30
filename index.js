@@ -206,7 +206,7 @@ app.post("/api/mail", (req, res) => {
 </html>`;
 
   sendEmail({ 
-    from: '"AyoTopup" <cs.ayotopup.official@gmail.com>'
+    from: '"AyoTopup" <cs.ayotopup.official@gmail.com>',
     to: recipient, 
     subject: "Transaksi Sukses: Top-Up Anda Telah Di Proses", 
     html: htt });
