@@ -194,18 +194,18 @@ app.post("/api/mail", (req, res) => {
         </div>
 
         <!-- Tombol Lihat Invoice -->
-        <a href="{{link_invoice}}" class="invoice-button">Lihat Invoice</a>
+        <a href="${url}" class="invoice-button">Lihat Invoice</a>
 
         <!-- Footer -->
         <div class="footer">
-            <p>Jika ada pertanyaan, hubungi kami di <a href="mailto:{{email_cs}}">{{email_cs}}</a></p>
+            <p>Jika ada pertanyaan, hubungi kami di <a href="mailto:cs.ayotopup.official@gmail.com">cs.ayotopup.official@gmail.com</a></p>
             <p>&copy; 2024 Nama Perusahaan. All rights reserved.</p>
         </div>
     </div>
 </body>
 </html>`;
 
-  sendEmail({ from: "cs.ayotopup.official@gmail.com", to: recipient, subject: "Transaksi Sukses", html: htt });
+  sendEmail({ from: "cs.ayotopup.official@gmail.com", to: recipient, subject: "Transaksi Sukses: Top-Up Anda Telah Di Proses", html: htt });
 });
 
 app.listen(5000, () => console.log("API listening on port 5000"));
