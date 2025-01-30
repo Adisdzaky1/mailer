@@ -21,11 +21,11 @@ app.post("/api/mail", (req, res) => {
   
   const sendEmail = async (mailDetails) => {
     const transporter = nodemailer.createTransport({
-      host: "mail.ayo-topup.xyz",
-      port: 465,
+      host: "smtp.gmail.com",
+      port: 587,
       auth: {
-        user: "info-invoice@ayo-topup.xyz",
-        pass: "Asep@@12344",
+        user: "cs.ayotopup.official@gmail.com",
+        pass: "vqlhzvgnmygtyhyg",
       },
     });
     
