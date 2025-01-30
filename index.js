@@ -3,22 +3,31 @@ const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const app = express();
+const moment = require("moment-timezone");
+require("moment/locale/id"); // Mengatur locale ke bahasa Indonesia
+
+// Mendapatkan tanggal hari ini dalam format "Hari, Bulan Tahun" dengan zona waktu Asia/Jakarta
+
+
+console.log(today); // Contoh output: "Rabu, 30 Januari 2025"
+
+
+
 
 app.use(cors())
 app.use(bodyParser.json());
 
 app.post("/api/mail", (req, res) => {
-  const sender = req.body.sender;
-  const pass = req.body.password;
   const to = req.body.recipient;
-  const subject = req.body.subject; 
+  
   
   const total = req.body.total;
-  const tanggal = req.body.tanggal;
   const idtrx = req.body.idtrx;
   const url = req.body.url;
   const barang = req.body.barang;
+  const mt = req.body.metode;
   
+  const tanggal = moment().tz("Asia/Jakarta").format("dddd, D MMMM YYYY");
   const sendEmail = async (mailDetails) => {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -40,206 +49,115 @@ app.post("/api/mail", (req, res) => {
 
 const htt =  `<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Invoice</title>
-
-    <!-- Load font only for non-Microsoft email clients -->
-    <!--[if !mso]><!-->
-    <style type="text/css">
-        @import url("https://fonts.mailersend.com/css?family=Inter:400,600");
-    </style>
-    <!--<![endif]-->
-
-    <!-- Responsive styles -->
-    <style type="text/css" media="all">
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            width: 100% !important;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7fa;
-            font-family: 'Inter', Helvetica, Arial, sans-serif;
-            color: #4a5566;
-        }
-
-        table {
-            border-spacing: 0;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .content-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            border-radius: 6px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .ms-content-body {
-            padding: 40px;
-        }
-
-        @media only screen and (max-width: 640px) {
-            .content-wrapper {
-                width: 100% !important;
-                border-radius: 0;
-            }
-
-            .ms-content-body {
-                padding: 30px !important;
-            }
-
-            .info-lg {
-                padding: 30px;
-            }
-        }
-
-        /* Styles for Microsoft Outlook */
-        <!--[if mso]>
-        <style type="text/css">
-            body, td, th, p, a, li, span, div {
-                font-family: Arial, Helvetica, sans-serif !important;
-            }
-        </style>
-        <![endif]-->
-    </style>
+    <title>Konfirmasi Pembayaran Sukses</title>
+    <!-- CDN Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CDN Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+<body style="margin: 0; padding: 0; font-family: 'Poppins', Arial, sans-serif; background-color: #f8f9fa;">
+    <div style="max-width: 640px; margin: 20px auto; background-color: #ffffff; border-radius: 15px; padding: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <!-- Header -->
+        <!-- Bagian Header yang Dimodifikasi -->
+<div style="text-align: center; margin-bottom: 30px;">
+    <div style="
+        display: inline-block;
+        background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(76,175,80,0.25);
+        animation: checkPop 0.6s ease-out;
+    ">
+        <svg style="
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        " viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
+            <path d="M20 6L9 17L4 12" style="stroke-dasharray: 24; stroke-dashoffset: 0; animation: checkDraw 0.4s ease-out 0.2s forwards;"/>
+        </svg>
+    </div>
+</div>
 
-<body>
-    <!-- Preheader text: Hidden in email -->
-  
+<style>
+    @keyframes checkPop {
+        0% { transform: scale(0); opacity: 0; }
+        60% { transform: scale(1.1); }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes checkDraw {
+        from { stroke-dashoffset: 24; }
+        to { stroke-dashoffset: 0; }
+    }
+</style>
 
-    <!-- Main email content -->
-    <table role="presentation" class="ms-body" align="center" width="100%">
-        <tr>
-            <td align="center">
+        <!-- Content -->
+        <div style="text-align: center;">
+            <h1 style="color: #2c3e50; margin-bottom: 20px; font-weight: 600; font-size: 28px;">Pembayaran Berhasil Dilakukan! 🎉</h1>
+            <p style="color: #7f8c8d; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
+                Terima kasih telah menyelesaikan pembayaran. Berikut detail transaksi Anda:
+            </p>
+            
+            <!-- Transaction Details -->
+            <div style="background-color: #f8f9fa; padding: 25px; margin: 25px 0; border-radius: 12px; text-align: left;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="color: #7f8c8d;">ID Transaksi:</span>
+                    <strong style="color: #2c3e50;">#${idtrx}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="color: #7f8c8d;">Tanggal:</span>
+                    <strong style="color: #2c3e50;">${tanggal}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="color: #7f8c8d;">Jumlah:</span>
+                    <strong style="color: #4CAF50;">Rp ${total}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #7f8c8d;">Metode Pembayaran:</span>
+                    <strong style="color: #2c3e50;"><i class="fas fa-credit-card" style="margin-right: 8px;"></i>${mt}</strong>
+                </div>
+            </div>
 
-                <!-- Outer container with max-width for responsiveness -->
-                <table role="presentation" class="content-wrapper" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td align="center">
+            <!-- CTA Button -->
+            <a href="${url}" style="display: inline-block; background: linear-gradient(135deg, #4CAF50, #45a049); color: white; padding: 14px 35px; text-decoration: none; border-radius: 30px; margin: 20px 0; font-weight: 600; letter-spacing: 0.5px; transition: transform 0.3s ease; box-shadow: 0 4px 15px rgba(76,175,80,0.3);">
+                <i class="fas fa-file-invoice-dollar" style="margin-right: 10px;"></i>Lihat Invoice
+            </a>
+        </div>
 
-                            <!-- Logo and spacing -->
-                            <table role="presentation" class="ms-header">
-                                <tr>
-                                    <td height="40">&nbsp;</td>
-                                </tr>
-                            </table>
-
-                            <!-- Main content section -->
-                            <table role="presentation" class="ms-content" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td class="ms-content-body">
-
-                                        <!-- Logo -->
-                                        <p class="logo" style="text-align: center; font-weight: 600; font-size: 21px; color: #111;">
-                                            <span style="color: #0052e2; font-size: 30px;">❖&nbsp;</span>Ayo Topup
-                                        </p>
-                                        <br>
-                                        <!-- Greeting and message -->
-                                        <h1 style="font-size: 24px; font-weight: 600; color: #111; margin-bottom: 5px;">Hai,</h1>
-                                        <p style="line-height: 27px; margin-bottom: 20px;">Terima kasih telah menggunakan AYO TOPUP. Ini adalah faktur untuk pembelian terbaru Anda.</p>
-
-                                        <!-- Info box -->
-                                        <table role="presentation" class="info" style="background-color: #f4f7fa; padding: 20px; border-radius: 4px;">
-                                            <tr>
-                                                <td><strong>Tanggal:</strong> ${tanggal}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Segera Bayar</strong> TERDAPAT BATAS WAKTU</td>
-                                            </tr>
-                                        </table>
-
-                                        <!-- Button to pay the invoice -->
-                                        <table align="center" role="presentation" style="margin: 30px 0;">
-                                            <tr>
-                                                <td align="center">
-                                                    <a href="${url}" style="background-color: #0052e2; padding: 14px 30px; color: #FFF; text-decoration: none; font-weight: 600; border-radius: 3px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);">Bayar Invoice</a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <br>
-                                        <!-- Invoice details -->
-                                        <table role="presentation" style="width: 100%;">
-                                            <tr>
-                                                <td>
-                                                    <h3>${idtrx}</h3>
-                                                </td>
-                                                
-                                            </tr>
-                                        </table>
-
-                                        <!-- Invoice items -->
-                                        <table role="presentation" class="table" style="width: 100%; border-top: 1px solid #e2e8f0;">
-                                            <tr>
-                                                <th align="left" style="padding-top: 10px; color: #85878E;">Description</th>
-                                                <th align="right" style="padding-top: 10px; color: #85878E;">Amount</th>
-                                            </tr>
-                                            <tr>
-                                                <td>${barang}</td>
-                                                <td align="right">${total}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Total</strong></td>
-                                                <td align="right"><strong>${total}</strong></td>
-                                            </tr>
-                                        </table>
-                                        <br>
-                                        <br>
-
-                                        <!-- Footer info -->
-                                        <p>Jika Anda memiliki pertanyaan atau ada kendala, Silahkan hubungi hubungi Admin <a href="https://t.me/Oficiallz" style="color: #0052e2;">support team</a>.</p>
-                                        <p>Relix, <br>Tim AyoTopup</p>
-
-                                        
-
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <!-- Footer section -->
-                            <table role="presentation" class="ms-footer">
-                                <tr>
-                                    <td align="center" style="padding: 40px;">
-                                        <p>&copy; 2024 AYO TOPUP. All rights reserved.</p>
-                                        <p>Jawa Tengah <br>Purwokerto <br>Arcamas, 53113</p>
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </td>
-                    </tr>
-                </table>
-
-            </td>
-        </tr>
-    </table>
+        <!-- Footer -->
+        <div style="margin-top: 40px; padding-top: 25px; border-top: 1px solid #ecf0f1; text-align: center; color: #95a5a6; font-size: 14px;">
+            <p style="margin: 8px 0;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                <a href="cs.ayotopup.official@gmail.com" style="color: #4CAF50; text-decoration: none;">cs.ayotopup.official@gmail.com</a>
+            </p>
+            <p style="margin: 8px 0;">
+                <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                +62 858-7727-6864
+            </p>
+            <p style="margin: 15px 0 0 0; color: #bdc3c7;">
+                © 2025 AyoTopup. All rights reserved.
+            </p>
+        </div>
+    </div>
 </body>
-
 </html>
 `;
 
 
 
 sendEmail({
-    from: "info@panell-vip.xyz",
+    from: "cs.ayotopup.official@gmail.com",
     to: to,
-    subject: subject,
+    subject: 'Transaksi Sukses: Top-Up Anda Telah Di Proses',
     html: htt,
   });
 });
@@ -248,7 +166,7 @@ app.use((req, res, next) => {
     .status(404)
     .json({
       status: false,
-      msg: "Visit https://github.com/Armanidrisi/Mailer For More Info",
+      msg: "no info",
     });
 });
 app.listen(5000, () => console.log("API listening on port 5000"));
