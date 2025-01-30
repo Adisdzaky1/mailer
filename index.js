@@ -43,27 +43,13 @@ app.post("/api/mail", (req, res) => {
     <div style="max-width: 640px; margin: 20px auto; background-color: #ffffff; border-radius: 15px; padding: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         
         <!-- Header -->
-        <div style="text-align: center; margin-bottom: 30px;">
-            <div style="
-                display: inline-block;
-                background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
-                border-radius: 50%;
-                width: 100px;
-                height: 100px;
-                position: relative;
-                box-shadow: 0 4px 20px rgba(76,175,80,0.25);
-                animation: checkPop 0.6s ease-out;">
-                <svg style="
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                    width: 48px;
-                    height: 48px;" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
-                    <path d="M20 6L9 17L4 12"/>
-                </svg>
-            </div>
-        </div>
+        <tr>
+            <td style="text-align: center; padding: 30px 0;">
+                <div style="width: 100px; height: 100px; background: #4CAF50; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: white; font-size: 48px;">✓</span>
+                </div>
+            </td>
+        </tr>
 
         <!-- Content -->
         <div style="text-align: center;">
