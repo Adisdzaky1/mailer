@@ -105,6 +105,7 @@ app.post("/api/mail", (req, res) => {
         .details p {
             margin: 8px 0;
             font-size: 0.9rem;
+            color: white;
         }
 
         .details strong {
@@ -206,7 +207,7 @@ app.post("/api/mail", (req, res) => {
 </html>`;
 
   sendEmail({ 
-    from: '"AyoTopup" <cs.ayotopup.official@gmail.com>',
+    from: '"AyoTopup Official" <cs.ayotopup.official@gmail.com>',
     to: recipient, 
     subject: "Transaksi Sukses: Top-Up Anda Telah Di Proses", 
     html: htt });
