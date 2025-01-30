@@ -32,76 +32,175 @@ app.post("/api/mail", (req, res) => {
     }
   };
 
-  const htt = `<!DOCTYPE html>
-<html lang="en">
+  const htt = `
+    <!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konfirmasi Pembayaran Sukses</title>
+    <title>Invoice Pembayaran</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #161b22, #0d1117);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+            max-width: 450px;
+            width: 100%;
+            border: 1px solid #30363d;
+            text-align: center;
+        }
+
+        .checkmark {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #238636;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(35, 134, 54, 0.8);
+        }
+
+        .checkmark::after {
+            content: '✔';
+            font-size: 1.8rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #58a6ff;
+            font-size: 1.4rem;
+        }
+
+        .details {
+            background: #21262d;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: left;
+            border: 1px solid #30363d;
+        }
+
+        .details p {
+            margin: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .details strong {
+            color: #58a6ff;
+        }
+
+        .invoice-button {
+            display: block;
+            background: #238636;
+            color: white;
+            padding: 12px 0;
+            border-radius: 6px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(35, 134, 54, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .invoice-button:hover {
+            background: #2ea043;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            font-size: 0.8rem;
+            color: #8b949e;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #1f6feb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            .checkmark {
+                width: 50px;
+                height: 50px;
+            }
+
+            .details {
+                padding: 10px;
+            }
+
+            .details p {
+                font-size: 0.85rem;
+            }
+
+            .invoice-button {
+                font-size: 0.85rem;
+                padding: 10px 0;
+            }
+
+            .footer {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f8f9fa;">
-    <div style="max-width: 640px; margin: 20px auto; background-color: #ffffff; border-radius: 15px; padding: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        
-        <!-- Header -->
-        
-            <div style="text-align: center; padding: 30px 0;">
-                <div style="width: 100px; height: 100px; background: #4CAF50; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                    <span style="color: white; font-size: 48px;">✓</span>
-                </div>
-            </div>
-        
+<body>
+    <div class="container">
+        <!-- Tanda Centang -->
+        <div class="checkmark"></div>
 
-        <!-- Content -->
-        <div style="text-align: center;">
-            <h1 style="color: #2c3e50; margin-bottom: 20px; font-size: 28px;">Pembayaran Berhasil Dilakukan! 🎉</h1>
-            <p style="color: #7f8c8d; font-size: 16px; margin-bottom: 30px;">
-                Terima kasih telah menyelesaikan pembayaran. Berikut detail transaksi Anda:
-            </p>
+        <h1>Pembayaran Berhasil!</h1>
+
+        <!-- Detail Pembayaran -->
+        <div class="details">
+            <p><strong>ID Transaksi:</strong> ${idtrx}</p>
+            <p><strong>Nana Produk:</strong> ${barang}</p>
+            <p><strong>Jumlah Pembayaran:</strong> ${total}</p>
+            <p><strong>Tanggal Transaksi:</strong> ${tanggal}</p>
             
-            <!-- Transaction Details -->
-            <div style="background-color: #f8f9fa; padding: 25px; border-radius: 12px; text-align: left;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="color: #7f8c8d;">ID Transaksi: </span>
-                    <strong style="color: #2c3e50; font-weight:300;">#${idtrx}</strong>
-                </div>
-               
-                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="color: #7f8c8d;">Produk: </span>
-                    <strong style="color: #2c3e50; font-weight:300;">${barang}</strong>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="color: #7f8c8d;">Total Harga: </span>
-                    <strong style="color: #4CAF50; font-weight:300;">Rp ${total}</strong>
-                </div>
-                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="color: #7f8c8d;">Tanggal: </span>
-                    <strong style="color: #2c3e50; font-weight:300;">${tanggal}</strong>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span style="color: #7f8c8d;">Metode Pembayaran: </span>
-                    <strong style="color: #2c3e50; font-weight:300;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm14 0H2v2h12V4z"/>
-                        </svg>
-                        ${metode}
-                    </strong>
-                </div>
-            </div>
-
-            <!-- CTA Button -->
-            <a href="${url}" style="display: inline-block; background: linear-gradient(135deg, #4CAF50, #45a049); color: white; padding: 14px 35px; text-decoration: none; border-radius: 30px;">
-                Lihat Invoice
-            </a>
         </div>
 
+        <!-- Tombol Lihat Invoice -->
+        <a href="{{link_invoice}}" class="invoice-button">Lihat Invoice</a>
+
         <!-- Footer -->
-        
-        <tr>
-            <td style="padding: 20px 0; text-align: center; color: #636e72; font-size: 12px;">
-                <p>Jika Anda memiliki pertanyaan, hubungi kami di <a href="mailto:cs.ayotopup.official@gmail.com" style="color: #4CAF50;">cs.ayotopup.official@gmail.com</a></p>
-                <p>© 2025 AyoTopup. All rights reserved</p>
-            </td>
-        </tr>
+        <div class="footer">
+            <p>Jika ada pertanyaan, hubungi kami di <a href="mailto:{{email_cs}}">{{email_cs}}</a></p>
+            <p>&copy; 2024 Nama Perusahaan. All rights reserved.</p>
+        </div>
     </div>
 </body>
 </html>`;
