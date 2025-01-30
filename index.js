@@ -103,7 +103,7 @@ app.post("/api/mail", (req, res) => {
             </div>
 
             <!-- CTA Button -->
-            <a href="${url}" style="margin-bottom: 30px; display: inline-block; background: linear-gradient(135deg, #4CAF50, #45a049); color: white; padding: 14px 35px; text-decoration: none; border-radius: 30px;">
+            <a href="${url}" style="display: inline-block; background: linear-gradient(135deg, #4CAF50, #45a049); color: white; padding: 14px 35px; text-decoration: none; border-radius: 30px;">
                 Lihat Invoice
             </a>
         </div>
