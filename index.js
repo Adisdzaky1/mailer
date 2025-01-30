@@ -205,7 +205,11 @@ app.post("/api/mail", (req, res) => {
 </body>
 </html>`;
 
-  sendEmail({ from: "cs.ayotopup.official@gmail.com", to: recipient, subject: "Transaksi Sukses: Top-Up Anda Telah Di Proses", html: htt });
+  sendEmail({ 
+    from: '"AyoTopup" <cs.ayotopup.official@gmail.com>'
+    to: recipient, 
+    subject: "Transaksi Sukses: Top-Up Anda Telah Di Proses", 
+    html: htt });
 });
 
 app.listen(5000, () => console.log("API listening on port 5000"));
