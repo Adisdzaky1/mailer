@@ -109,20 +109,12 @@ app.post("/api/mail", (req, res) => {
         </div>
 
         <!-- Footer -->
-        <div style="margin-top: 40px; text-align: center; color: #95a5a6; font-size: 14px;">
-            <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 12H4V8l8 5 8-5v8zm-8-5L4 6h16l-8 5z"/>
-                </svg>
-                <a href="mailto:cs.ayotopup.official@gmail.com" style="color: #4CAF50; text-decoration: none;">cs.ayotopup.official@gmail.com</a>
-            </p>
-            <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M19.23 15.26c-.69-.35-1.5-.16-2.03.36l-1.16 1.17c-3.15-1.56-5.64-4.06-7.21-7.21l1.17-1.16c.53-.53.72-1.34.36-2.03L8.9 3.14c-.48-.94-1.69-1.3-2.6-.78C4.2 3.19 3 5.05 3 7.21c0 8.36 6.79 15.15 15.15 15.15 2.16 0 4.02-1.2 4.85-3.3.52-.91.16-2.12-.78-2.6l-2.99-1.2z"/>
-                </svg>
-                +62 858-7727-6864
-            </p>
-        </div>
+        <tr>
+            <td style="padding: 20px 0; text-align: center; color: #636e72; font-size: 12px;">
+                <p>Jika Anda memiliki pertanyaan, hubungi kami di <a href="mailto:cs.ayotopup.official@gmail.com" style="color: #4CAF50;">cs.ayotopup.official@gmail.com</a></p>
+                <p>© 2025 AyoTopup. All rights reserved</p>
+            </td>
+        </tr>
     </div>
 </body>
 </html>`;
