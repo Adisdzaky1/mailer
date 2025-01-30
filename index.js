@@ -6,10 +6,6 @@ const app = express();
 const moment = require("moment-timezone");
 require("moment/locale/id"); // Mengatur locale ke bahasa Indonesia
 
-// Mendapatkan tanggal hari ini dalam format "Hari, Bulan Tahun" dengan zona waktu Asia/Jakarta
-
-
-console.log(today); // Contoh output: "Rabu, 30 Januari 2025"
 
 
 
