@@ -43,13 +43,13 @@ app.post("/api/mail", (req, res) => {
     <div style="max-width: 640px; margin: 20px auto; background-color: #ffffff; border-radius: 15px; padding: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         
         <!-- Header -->
-        <tr>
-            <td style="text-align: center; padding: 30px 0;">
+        
+            <div style="text-align: center; padding: 30px 0;">
                 <div style="width: 100px; height: 100px; background: #4CAF50; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
                     <span style="color: white; font-size: 48px;">✓</span>
                 </div>
-            </td>
-        </tr>
+            </div>
+        
 
         <!-- Content -->
         <div style="text-align: center;">
