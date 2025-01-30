@@ -33,7 +33,7 @@ app.post("/api/mail", (req, res) => {
   };
 
   const htt = `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -105,11 +105,16 @@ app.post("/api/mail", (req, res) => {
         .details p {
             margin: 8px 0;
             font-size: 0.9rem;
-            color: white;
+            
         }
 
         .details strong {
             color: #58a6ff;
+        }
+
+        .highlight {
+            color: #f1c40f; /* Warna kuning terang untuk nilai variabel */
+            font-weight: bold;
         }
 
         .invoice-button {
@@ -187,11 +192,10 @@ app.post("/api/mail", (req, res) => {
 
         <!-- Detail Pembayaran -->
         <div class="details">
-            <p><strong>ID Transaksi:</strong> ${idtrx}</p>
-            <p><strong>Nana Produk:</strong> ${barang}</p>
-            <p><strong>Jumlah Pembayaran:</strong> ${total}</p>
-            <p><strong>Tanggal Transaksi:</strong> ${tanggal}</p>
-            
+            <p><strong>ID Transaksi:</strong> <span class="highlight">${idtrx}</span></p>
+            <p><strong>Nama Produk:</strong> <span class="highlight">${barang}</span></p>
+            <p><strong>Jumlah Pembayaran:</strong> <span class="highlight">${total}</span></p>
+            <p><strong>Tanggal Transaksi:</strong> <span class="highlight">${tanggal}</span></p>
         </div>
 
         <!-- Tombol Lihat Invoice -->
