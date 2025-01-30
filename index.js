@@ -75,24 +75,25 @@ app.post("/api/mail", (req, res) => {
             <!-- Transaction Details -->
             <div style="background-color: #f8f9fa; padding: 25px; border-radius: 12px; text-align: left;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="color: #7f8c8d;">ID Transaksi:</span>
-                    <strong style="color: #2c3e50;">#${idtrx}</strong>
+                    <span style="color: #7f8c8d;">ID Transaksi: </span>
+                    <strong style="color: #2c3e50; font-weight:300;">#${idtrx}</strong>
+                </div>
+               
+                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span style="color: #7f8c8d;">Produk: </span>
+                    <strong style="color: #2c3e50; font-weight:300;">${barang}</strong>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="color: #7f8c8d;">Tanggal:</span>
-                    <strong style="color: #2c3e50;">${tanggal}</strong>
+                    <span style="color: #7f8c8d;">Total Harga: </span>
+                    <strong style="color: #4CAF50; font-weight:300;">Rp ${total}</strong>
                 </div>
                  <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="color: #7f8c8d;">Produk:</span>
-                    <strong style="color: #4CAF50;">${barang}</strong>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="color: #7f8c8d;">Total:</span>
-                    <strong style="color: #4CAF50;">Rp ${total}</strong>
+                    <span style="color: #7f8c8d;">Tanggal: </span>
+                    <strong style="color: #2c3e50; font-weight:300;">${tanggal}</strong>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
-                    <span style="color: #7f8c8d;">Metode Pembayaran:</span>
-                    <strong style="color: #2c3e50;">
+                    <span style="color: #7f8c8d;">Metode Pembayaran: </span>
+                    <strong style="color: #2c3e50; font-weight:300;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm14 0H2v2h12V4z"/>
                         </svg>
