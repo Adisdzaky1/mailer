@@ -189,6 +189,7 @@ app.post("/api/mail", (req, res) => {
         <div class="checkmark"></div>
 
         <h1>Pembayaran Berhasil!</h1>
+        <p style="margin-bottom: 15px;">Terima kasih telah menyelesaikan pembayaran. Transaksi Anda telah berhasil diproses.</p>
 
         <!-- Detail Pembayaran -->
         <div class="details">
@@ -204,7 +205,7 @@ app.post("/api/mail", (req, res) => {
         <!-- Footer -->
         <div class="footer">
             <p>Jika ada pertanyaan, hubungi kami di <a href="mailto:cs.ayotopup.official@gmail.com">cs.ayotopup.official@gmail.com</a></p>
-            <p>&copy; 2024 Nama Perusahaan. All rights reserved.</p>
+            <p>&copy; 2025 AyoTopup. All rights reserved.</p>
         </div>
     </div>
 </body>
