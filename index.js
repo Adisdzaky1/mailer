@@ -90,7 +90,7 @@ app.post("/api/mail", (req, res) => {
 
         h1 {
             color: #58a6ff;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
         }
 
         .details {
@@ -189,7 +189,7 @@ app.post("/api/mail", (req, res) => {
         <div class="checkmark"></div>
 
         <h1>Pembayaran Berhasil!</h1>
-        <p style="margin-bottom: 15px;">Terima kasih telah menyelesaikan pembayaran. Transaksi Anda telah berhasil diproses.</p>
+        <p style="color: #58a6ff; margin-bottom: 15px;">Terima kasih telah menyelesaikan pembayaran. Transaksi Anda telah berhasil diproses.</p>
 
         <!-- Detail Pembayaran -->
         <div class="details">
